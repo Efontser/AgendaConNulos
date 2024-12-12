@@ -98,7 +98,10 @@ namespace Servidores
             LeerFichero(maquinas);
             if (maquinas.Count == 0)
             {
-                maquinas.Add(miMaquina); // todo También debía añadir la mía, pero no solo si Count = 0 porque puede ocurrir que haya otras pero no las nuestras
+                foreach(String maquina in maquinas)
+                {
+                    maquinas.Add(maquina);
+                } // todo También debía añadir la mía, pero no solo si Count = 0 porque puede ocurrir que haya otras pero no las nuestras
             }
             foreach (String linea in maquinas)
             {
