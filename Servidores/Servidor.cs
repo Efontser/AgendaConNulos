@@ -12,9 +12,10 @@ namespace Servidores
 
         private static string rutaCarpeta = @".\FicheroServidores";
         private static string rutaFichero = @".\FicheroServidores\Servidores.txt";
-        private static string miMaquina = $"{Environment.MachineName}*{Environment.MachineName}";
+        private static string maquinaEdu = $"EDUFONT\\EDUFONT";
+        private static string maquinaLuismi = $"DESKTOP-M6IBFCR\\SQLEXPRESS";
         private static string maquinaMaria = $"4V-PRO-948*4V-PRO-948\\SQLEXPRESS";
-        private static String[] maquinas = { miMaquina, maquinaMaria };
+        private static String[] maquinas = { maquinaEdu, maquinaMaria, maquinaLuismi };
 
         private static Boolean ComprobarCarpeta()
         {
