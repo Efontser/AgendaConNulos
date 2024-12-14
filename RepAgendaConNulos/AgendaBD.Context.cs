@@ -16,8 +16,8 @@ namespace RepAgendaConNulos
     
     public partial class AgendaEntities : DbContext
     {
-        public AgendaEntities()
-            : base("name=AgendaEntities")
+        public AgendaEntities(String cadenaConexion)
+            : base(cadenaConexion)
         {
         }
     

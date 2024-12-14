@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Servidores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,23 @@ namespace RepAgendaConNulos
 {
     public class GestionAgenda
     {
+        
         AgendaEntities miAgendaEntities;
         public GestionAgenda( out String error) //out error
         {
             error = "";
             try
             {
-                miAgendaEntities = new AgendaEntities();
+                String miServidor = Servidor.ServidorActual();
+                String cadenaConexion = $@"metadata=res://*/AgendaBD.csdl|res://*/AgendaBD.ssdl|res://*/AgendaBD.msl;
+                           provider=System.Data.SqlClient;
+                           provider connection string='data source={miServidor};
+                           initial catalog=Agenda;
+                           integrated security=True;
+                           trustservercertificate=True;
+                           MultipleActiveResultSets=True;
+                           App=EntityFramework'";
+                miAgendaEntities = new AgendaEntities(cadenaConexion);
             }
             catch (Exception e)
             {

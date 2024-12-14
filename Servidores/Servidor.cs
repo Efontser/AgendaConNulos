@@ -13,7 +13,7 @@ namespace Servidores
         private static string rutaCarpeta = @".\FicheroServidores";
         private static string rutaFichero = @".\FicheroServidores\Servidores.txt";
         private static string maquinaEdu = $"EDUFONT\\EDUFONT";
-        private static string maquinaLuismi = $"DESKTOP-M6IBFCR\\SQLEXPRESS";
+        private static string maquinaLuismi = $"DESKTOP-M6IBFCR*DESKTOP-M6IBFCR\\SQLEXPRESS";
         private static string maquinaMaria = $"4V-PRO-948*4V-PRO-948\\SQLEXPRESS";
         private static String[] maquinas = { maquinaEdu, maquinaMaria, maquinaLuismi };
 
@@ -101,7 +101,7 @@ namespace Servidores
                 foreach(String maquina in maquinas)
                 {
                     maquinas.Add(maquina);
-                } // todo También debía añadir la mía, pero no solo si Count = 0 porque puede ocurrir que haya otras pero no las nuestras
+                }
             }
             foreach (String linea in maquinas)
             {
