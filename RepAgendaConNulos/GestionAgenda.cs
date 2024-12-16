@@ -48,5 +48,24 @@ namespace RepAgendaConNulos
                 return null;
             }
         }
+
+        public Contacto ContactoPorId(out String error,String id)
+        {
+            var idInt = 0;
+            error = "";
+            if (String.IsNullOrEmpty(id))
+            {
+                error = "El id no puede estar vacío";
+                return null;
+            }
+            if (!int.TryParse(id,out idInt))
+            {
+                error = "Solo se admiten numeros";
+                return null;
+            }
+
+
+            
+        }
     }
 }
