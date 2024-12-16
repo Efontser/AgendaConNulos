@@ -30,5 +30,15 @@ namespace CapaPresentacion
                 lblTexto.Text = "Todos los contactos ordenados";
             }
         }
+
+        private void btnId_Click(object sender, EventArgs e)
+        {
+            var error = "";
+            dgvDatos.DataSource = Program.gestion.ContactoPorId(out error,txtid.Text);
+            if (error != "")
+            {
+                lblTexto.Text = error;
+            }
+        }
     }
 }

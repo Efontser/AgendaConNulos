@@ -31,6 +31,8 @@
             this.btnContactos = new System.Windows.Forms.Button();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.lblTexto = new System.Windows.Forms.Label();
+            this.btnId = new System.Windows.Forms.Button();
+            this.txtid = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,11 +65,30 @@
             this.lblTexto.Size = new System.Drawing.Size(572, 41);
             this.lblTexto.TabIndex = 2;
             // 
+            // btnId
+            // 
+            this.btnId.Location = new System.Drawing.Point(496, 355);
+            this.btnId.Name = "btnId";
+            this.btnId.Size = new System.Drawing.Size(201, 65);
+            this.btnId.TabIndex = 3;
+            this.btnId.Text = "button1";
+            this.btnId.UseVisualStyleBackColor = true;
+            this.btnId.Click += new System.EventHandler(this.btnId_Click);
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(531, 327);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(139, 22);
+            this.txtid.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtid);
+            this.Controls.Add(this.btnId);
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.btnContactos);
@@ -75,6 +96,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,6 +105,8 @@
         private System.Windows.Forms.Button btnContactos;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Label lblTexto;
+        private System.Windows.Forms.Button btnId;
+        private System.Windows.Forms.TextBox txtid;
     }
 }
 

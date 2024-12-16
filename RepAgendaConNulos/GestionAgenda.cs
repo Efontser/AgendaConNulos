@@ -63,9 +63,17 @@ namespace RepAgendaConNulos
                 error = "Solo se admiten numeros";
                 return null;
             }
+            var contacto = miAgendaEntities.Contactos.SingleOrDefault(con => con.IdContacto.Equals(idInt));
+            if (contacto == null)
+            {
+                error = $"No existe el contacto con el id: {idInt}";
+                return null;
+            }
+            return contacto;
 
 
-            
+
+
         }
     }
 }
