@@ -2,6 +2,7 @@
 using Servidores;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,6 @@ namespace RepAgendaConNulos
 {
     public class GestionAgenda
     {
-        
         AgendaEntities miAgendaEntities;
         public GestionAgenda( out String error) //out error
         {
@@ -48,5 +48,22 @@ namespace RepAgendaConNulos
                 return null;
             }
         }
+        public List<Contacto> ContactosTelefono(string numero, out String error)
+        {
+            error = "";
+            try
+            {
+                int idContactoBuscado = miAgendaEntities.Telefonos.Where(tel => tel.Numero.Equals(numero, StringComparison.OrdinalIgnoreCase)).Select(tel => tel.IdContacto).FirstOrDefault();
+                miAgendaEntities.Telefonos.Where(tel => tel.Numero == numero).ToList();
+                
+                return miAgendaEntities.Contactos.Where(contact => contact.IdContacto == idContactoBuscado).ToList();
+            }
+            catch (Exception e)
+            {
+                error = e.Message.ToString();
+                return null;
+            }
+            
+        }
+        }
     }
-}

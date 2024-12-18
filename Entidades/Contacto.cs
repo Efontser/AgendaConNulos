@@ -19,7 +19,14 @@ namespace Entidades
         {
             this.Telefonos = new HashSet<Telefono>();
         }
-    
+
+        public Contacto(int idContacto, string nombre, string email)
+        {
+            IdContacto = idContacto;
+            Nombre = nombre;
+            Email = email;
+        }
+
         public int IdContacto { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }

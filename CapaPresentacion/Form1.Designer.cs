@@ -31,6 +31,9 @@
             this.btnContactos = new System.Windows.Forms.Button();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.lblTexto = new System.Windows.Forms.Label();
+            this.btnContactoPorTelefono = new System.Windows.Forms.Button();
+            this.txtTel = new System.Windows.Forms.TextBox();
+            this.lblTel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,18 +66,49 @@
             this.lblTexto.Size = new System.Drawing.Size(572, 41);
             this.lblTexto.TabIndex = 2;
             // 
+            // btnContactoPorTelefono
+            // 
+            this.btnContactoPorTelefono.Location = new System.Drawing.Point(360, 331);
+            this.btnContactoPorTelefono.Name = "btnContactoPorTelefono";
+            this.btnContactoPorTelefono.Size = new System.Drawing.Size(137, 75);
+            this.btnContactoPorTelefono.TabIndex = 3;
+            this.btnContactoPorTelefono.Text = "Contacto por teléfono";
+            this.btnContactoPorTelefono.UseVisualStyleBackColor = true;
+            this.btnContactoPorTelefono.Click += new System.EventHandler(this.btnContactoPorTelefono_Click);
+            // 
+            // txtTel
+            // 
+            this.txtTel.Location = new System.Drawing.Point(397, 412);
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(100, 22);
+            this.txtTel.TabIndex = 4;
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(367, 415);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(24, 16);
+            this.lblTel.TabIndex = 5;
+            this.lblTel.Text = "tel:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTel);
+            this.Controls.Add(this.txtTel);
+            this.Controls.Add(this.btnContactoPorTelefono);
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.btnContactos);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,6 +117,9 @@
         private System.Windows.Forms.Button btnContactos;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Label lblTexto;
+        private System.Windows.Forms.Button btnContactoPorTelefono;
+        private System.Windows.Forms.TextBox txtTel;
+        private System.Windows.Forms.Label lblTel;
     }
 }
 
