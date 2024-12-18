@@ -24,7 +24,8 @@ namespace CapaPresentacion
         private void btnContactos_Click(object sender, EventArgs e)
         {
             dgvDatos.DataSource = Program.gestion.ContactosOrdenados(out String error);
-            if (error != "") {
+            if (error != "")
+            {
                 lblTexto.Text = error;
                 return;
             }
@@ -36,37 +37,34 @@ namespace CapaPresentacion
 
         private void btnContactoPorTelefono_Click(object sender, EventArgs e)
         {
+            dgvDatos.DataSource = null;
+            if (String.IsNullOrEmpty(txtTel.Text))
+            {
+                lblTexto.Text = "ERROR: Teléfono está vacío o no es válido";
+                return;
+            }
             try
             {
-                if (String.IsNullOrEmpty(txtTel.Text))
+                int telefonoBuscado = int.Parse(txtTel.Text);
+                List<Contacto> contactos = gst.ContactosTelefono(txtTel.Text, out string err);
+                if (!String.IsNullOrEmpty(err))
                 {
-                    lblTexto.Text = "ERROR: Teléfono está vacío o no es válido";
-                    dgvDatos.DataSource = null;
+                    lblTexto.Text = err;
+                    return;
                 }
-                else
+                if (contactos == null)
                 {
-                    int telefonoBuscado = int.Parse(txtTel.Text);
-                    List<Contacto> contacto = gst.ContactosTelefono(txtTel.Text, out string err);
-                    if (!String.IsNullOrEmpty(err))
-                    {
-                        lblTexto.Text = err;
-                        dgvDatos.DataSource = null;
-                    }else if (contacto == null)
-                    {
-                        lblTexto.Text = "No existe ningún contacto con teléfono: " + telefonoBuscado;
-                        dgvDatos.DataSource = null;
-                    }else
-                    {
-                        lblTexto.Text = "Contactos del teléfono: " + telefonoBuscado;
-                        dgvDatos.DataSource = gst.ContactosTelefono(txtTel.Text, out err);
-                    }
-                                       
+                    lblTexto.Text = "No existe ningún contacto con teléfono: " + telefonoBuscado;
+                    return;
                 }
-            }catch (Exception ex)
+                lblTexto.Text = "Contactos del teléfono: " + telefonoBuscado;
+                dgvDatos.DataSource = contactos;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -74,7 +72,7 @@ namespace CapaPresentacion
             gst = new GestionAgenda(out String err);
             if (!String.IsNullOrEmpty(err))
             {
-                MessageBox.Show(err,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
