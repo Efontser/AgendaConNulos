@@ -1,4 +1,5 @@
-﻿using RepAgendaConNulos;
+﻿using Entidades;
+using RepAgendaConNulos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,13 +46,21 @@ namespace CapaPresentacion
                 else
                 {
                     int telefonoBuscado = int.Parse(txtTel.Text);
-                    lblTexto.Text = "Contactos del teléfono: " + telefonoBuscado;
-                    dgvDatos.DataSource = gst.ContactosTelefono(txtTel.Text, out string err);
+                    List<Contacto> contacto = gst.ContactosTelefono(txtTel.Text, out string err);
                     if (!String.IsNullOrEmpty(err))
                     {
                         lblTexto.Text = err;
                         dgvDatos.DataSource = null;
+                    }else if (contacto == null)
+                    {
+                        lblTexto.Text = "No existe ningún contacto con teléfono: " + telefonoBuscado;
+                        dgvDatos.DataSource = null;
+                    }else
+                    {
+                        lblTexto.Text = "Contactos del teléfono: " + telefonoBuscado;
+                        dgvDatos.DataSource = gst.ContactosTelefono(txtTel.Text, out err);
                     }
+                                       
                 }
             }catch (Exception ex)
             {

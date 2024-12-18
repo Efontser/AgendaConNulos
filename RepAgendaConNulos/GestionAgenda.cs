@@ -55,7 +55,10 @@ namespace RepAgendaConNulos
             {
                 int idContactoBuscado = miAgendaEntities.Telefonos.Where(tel => tel.Numero.Equals(numero, StringComparison.OrdinalIgnoreCase)).Select(tel => tel.IdContacto).FirstOrDefault();
                 miAgendaEntities.Telefonos.Where(tel => tel.Numero == numero).ToList();
-                
+                if (idContactoBuscado == 0)
+                {
+                    return null;
+                }
                 return miAgendaEntities.Contactos.Where(contact => contact.IdContacto == idContactoBuscado).ToList();
             }
             catch (Exception e)
