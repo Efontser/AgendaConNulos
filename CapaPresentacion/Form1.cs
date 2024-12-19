@@ -57,6 +57,11 @@ namespace CapaPresentacion
                     lblTexto.Text = "No existe ningún contacto con teléfono: " + telefonoBuscado;
                     return;
                 }
+                if (contactos.Count <= 0)
+                {
+                    lblTexto.Text = "No existe ningún contacto con teléfono: " + telefonoBuscado;
+                    return;
+                }
                 lblTexto.Text = "Contactos del teléfono: " + telefonoBuscado;
                 dgvDatos.DataSource = contactos;
             }

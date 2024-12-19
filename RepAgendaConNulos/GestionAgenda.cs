@@ -51,22 +51,51 @@ namespace RepAgendaConNulos
         public List<Contacto> ContactosTelefono(string numero, out String error)
         {
             error = "";
+            //Toda la parte comentada es la versión de buscar el primer o único contacto que tenga el teléfono buscado
+            //try
+            //{
+            //    int idContactoBuscado = miAgendaEntities.Telefonos.Where(tel => tel.Numero.Equals(numero, StringComparison.OrdinalIgnoreCase)).Select(tel => tel.IdContacto).FirstOrDefault();
+            //    miAgendaEntities.Telefonos.Where(tel => tel.Numero == numero).ToList();
+            //    if (idContactoBuscado == 0)
+            //    {
+            //        return null;
+            //    }
+            //    return miAgendaEntities.Contactos.Where(contact => contact.IdContacto == idContactoBuscado).ToList();
+            //}
+            //catch (Exception e)
+            //{
+            //    error = e.Message.ToString();
+            //    return null;
+            //}
             try
             {
-                int idContactoBuscado = miAgendaEntities.Telefonos.Where(tel => tel.Numero.Equals(numero, StringComparison.OrdinalIgnoreCase)).Select(tel => tel.IdContacto).FirstOrDefault();
-                miAgendaEntities.Telefonos.Where(tel => tel.Numero == numero).ToList();
-                if (idContactoBuscado == 0)
+                var prueba = miAgendaEntities.Telefonos.Where(tel => tel.Numero.Equals(numero, StringComparison.OrdinalIgnoreCase)).Select(tel => tel.IdContacto).ToList();
+                if (prueba == null)
                 {
+                    error = "No existen contactos con el teléfono: " + numero;
                     return null;
                 }
-                return miAgendaEntities.Contactos.Where(contact => contact.IdContacto == idContactoBuscado).ToList();
+                List<Contacto> contactos = miAgendaEntities.Contactos.ToList();
+                List<Contacto> contactosEncontrados = new List<Contacto>();
+                foreach (var contact in contactos)
+                {
+                    if (prueba.Contains(contact.IdContacto))
+                    {
+                        contactosEncontrados.Add(contact);
+                    }
+                }
+                if (contactosEncontrados == null)
+                {
+                    error = "No existen contactos con el teléfono: " + numero;
+                    return null;
+                }
+                return contactosEncontrados.ToList();
             }
             catch (Exception e)
             {
                 error = e.Message.ToString();
                 return null;
             }
-            
         }
         }
     }
